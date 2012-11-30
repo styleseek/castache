@@ -28,6 +28,13 @@ Or install it yourself as:
   end
   p @object
 ````
+
+## Project Status
+
+- Build: [![Build Status](https://secure.travis-ci.org/styleseek/castache.png?branch=master)](https://travis-ci.org/styleseek/castache)
+- Code Quality: [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/styleseek/castache)
+- Dependencies: [![Dependency Status](https://gemnasium.com/styleseek/castache.png)](https://gemnasium.com/styleseek/castache)
+
 ## Contributing
 
 1. Fork it
