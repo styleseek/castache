@@ -21,7 +21,8 @@ Or install it yourself as:
     
 ````ruby
   require 'castache'
-  Castache.redis = Redis.new # you can also pass it a redis:// URI string or hash of options for Redis.new
+  Castache.redis = Redis.new # you can also pass it a redis:// URI string
+                             # or hash of options for Redis.new
   @object = Castache.fetch 'cache:key' do
     # some expensive operation goes here...
     {hello: 'world'}
