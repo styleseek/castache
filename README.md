@@ -23,10 +23,17 @@ Or install it yourself as:
 require 'castache'
 Castache.redis = Redis.new # you can also pass it a redis:// URI string
                             # or hash of options to pass to Redis.new
-@object = Castache.fetch 'cache:key' do 
-  {hello: 'world'} # some expensive operation goes here...
+object = Castache.fetch 'cache:key:1' do 
+  {greeting: 'hello'} # some expensive operation goes here...
 end
-p @object
+p object
+
+Castache.set 'cache:key:2', {greeting: 'goodbye'}
+object2 = Castache.get 'cache:key:2'
+p object2
+
+objects = Castache.mget ['cache:key:1','cache:key:2']
+objects.each {|o| puts o[:greeting] }
 ````
 
 ## Project Status

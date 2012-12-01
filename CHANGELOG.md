@@ -1,3 +1,9 @@
+## 0.0.2 (Dec 1, 2012)
+
+Features:
+- returns an array of re-hydrated ruby objects from redis with `Castache.mget`
+  when given an array of cache keys
+
 ## 0.0.1 (Nov 30, 2012)
 
 _initial release!_

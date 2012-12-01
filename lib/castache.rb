@@ -13,13 +13,18 @@ class Castache
     end
 
     def set(key, object)
-      object if @redis.set(key, Marshal.dump(object))
+      object if redis.set(key, Marshal.dump(object))
     end
 
     def get(key)
-      if value = @redis.get(key)
+      if value = redis.get(key)
         Marshal.load(value)
       end
+    end
+
+    def mget(keys)
+      raise TypeError, "keys should be an array" unless keys.is_a? Array
+      redis.mget(keys).map {|item| Marshal.load(item) unless item.nil? }
     end
     
     # Pass it a connected Redis object, a redis:// uri string, or a hash of

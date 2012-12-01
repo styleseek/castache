@@ -43,13 +43,13 @@ describe Castache do
     end
   end
 
-  describe "#write" do
+  describe "#set" do
     it "can write an object to the cache" do
       Castache.set('write-test',obj).must_equal obj
     end
   end
 
-  describe "#read" do
+  describe "#get" do
     it "can read an object from the cache" do
       Castache.set('read-test',obj)
       Castache.get('read-test').must_equal obj
@@ -57,6 +57,20 @@ describe Castache do
 
     it "returns nil if the key fails to retrieve an object" do
       Castache.get('read-nil-test').must_be_nil
+    end
+  end
+
+  describe "#mget" do
+    before do
+      Castache.set('get_all-test0', obj)
+      Castache.set('get_all-test1', [:a])
+      Castache.set('get_all-test2', [:b])
+      Castache.set('get_all-test3', [:c])
+    end
+
+    it "can get multiple objects from the cache" do
+      keys = ['get_all-test0','get_all-test1','get_all-test2','get_all-test3']
+      Castache.mget(keys).must_equal [obj, [:a], [:b], [:c]]
     end
   end
 
